@@ -33,7 +33,7 @@ ALTER TABLE Maitres MODIFY COLUMN id INT auto_increment;
 ALTER TABLE CHIENS MODIFY COLUMN id INT auto_increment;
 
 ALTER TABLE CHIENS
-ADD FOREIGN KEY (id_maitre) REFERENCES Maitres(id); 
+ADD FOREIGN KEY (id_Maitre) REFERENCES Maitres(id); 
 
 
 /*CREATE DATABASE AnnuaireToutou; -- CRÉATION DE LA BASE DE DONÉE
