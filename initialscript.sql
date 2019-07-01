@@ -6,9 +6,9 @@
 CREATE DATABASE AnnuaireToutou;
 --création d'un user & mot de passe access
 USE AnnuaireToutou;
-CREATE USER "adminToutou" @"localhost" IDENTIFIED BY ‘Annu@ireT0ut0u’ ;
+CREATE USER "adminToutou" @"mariadb" IDENTIFIED BY ‘Annu@ireT0ut0u’ ;
 --donne les privilèges sur la base de donnée.
-GRANT ALL PRIVILEGES ON AnnuaireToutou.* TO "adminToutou" @"localhost"; --WITH GRANT OPTION  donnerai  les privilèges pour creer des users
+GRANT ALL PRIVILEGES ON AnnuaireToutou.* TO "adminToutou" @"mariadb"; --WITH GRANT OPTION  donnerai  les privilèges pour creer des users
 -- flush (pousser - contraindre les droits au user)
 FLUSH PRIVILEGES; 
 
