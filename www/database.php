@@ -9,7 +9,7 @@ class Database{
     public function __constuct()
         {
             //le chemein vers le serveur
-            $PARAM_hote='localhost';
+            $PARAM_hote='mariadb';
             // le port de connection a al base de donnée
             $PARAM_port='3306';
             // le nom de ma base de donnée
@@ -25,8 +25,9 @@ class Database{
         $this->_connect = $connexion;
     }
 
-
-        try{
+}
+        try
+        {
             $connexion = new PDO(
                 'mysql:host='.$PARAM_hote.';dbname='.$PARAM_nom_bd,
                 $PARAM_utilisateur,
@@ -40,6 +41,6 @@ class Database{
         }
 
 
-}
+
 
 ?>
