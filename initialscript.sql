@@ -96,4 +96,13 @@ FROM CHIENS c
 INNER JOIN Maitres  m
 ON c.id_maitre = m.id;
 
+--delete un chien par id unique
+            DELETE c.* 
+            FROM CHIENS c          
+            WHERE  c.id = :id
 
+
+--mettre a jour les infos d'un chien   
+UPDATE CHIENS
+SET nom = "Toto", age = 4, race = "Terrier"  
+WHERE id = 1       

@@ -16,7 +16,7 @@ require_once("classChien.php");
         <section class ="container">
             <div class="row justify-content-around">
                 <div class="col-10">
-                   -
+              
 
             <?php
             //j'affiche le titre
@@ -47,8 +47,10 @@ require_once("classChien.php");
                 //mot de passse du user pour se connecter
                 $PARAM_mot_passe='Annu@ireT0ut0u';<br>";
             }
-
+//-----------------------------------------------------------------------
             $chien = $database->getChienById($_GET["id"]);
+            var_dump($chien);
+       
 
             echo "<ul>";   
                 echo "<li>"."l'Id du chien est :  <strong>".$chien->getId()."</strong></li>". 
@@ -59,9 +61,15 @@ require_once("classChien.php");
             echo "</ul>"; 
             ?>
                 </div>
-                
+                <a href="index.php">Acceuil</a>
+                <a href="create-chien.php">Ajouter un chien</a>
+                <a href="process-delete.php?id=<?php echo $chien->getId(); ?>">Delete</a>
+                <a href="update-chien.php?id=<?php echo $chien->getId(); ?>">Update</a>
+
+
             </div>
         </section>
+
     </body>
 </html>
 

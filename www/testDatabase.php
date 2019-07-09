@@ -4,6 +4,7 @@
 //import des fichiers necessaire au test
 require_once("database.php");
 require_once("classChien.php");
+require_once("classMaitre.php");
 
 //j'affiche le titre
 echo "<h1> Test de la Database </h1>";
@@ -92,7 +93,17 @@ echo "<ul>";
 echo "</ul>"; 
 */
 /*
-$database->deleteChien(72);
+$resultat=$database->deleteChien(80);
+if($resultat == true)
+{
+    echo "le chien a été supprimé";
+}
+else
+{
+    echo "il y a un souci de suppression";
+}
+*/
+/*
 $listeChiens = $database->getAllDogs();
 echo "<ul>";
     foreach($listeChiens as $chien)
@@ -104,7 +115,17 @@ echo "<ul>";
 echo "</ul>";
 */
 
-$database->updateChien(73,"Boule",9,"terrier");
+/*
+$resultat = $database->updateChien(73,"Boule",9,"terrier");
+
+if ($resultat = true )
+{
+    echo "le chien a bien été mis a jour";
+}
+else{
+    echo "impossible de mettre a jour le chien";
+}
+
 
 $listeChiens = $database->getAllDogs();
 
@@ -116,6 +137,21 @@ echo "<ul>";
         echo "<li>";
     }
 echo "</ul>";
+*/
+/*
+ $resultat = $database->getAllMasters();
+ echo "<ul>";
+    foreach($resultat as $res)
+    {
+        echo "<li>";
+        echo "le nom du maitre est: ".$res->getNomMaitre();
+        echo "</li>";
+    }
+    echo "</ul>";
+
+echo '<br/>';
+echo "<a href='index.php'>index</a>"
+*/
 
 
 ?>

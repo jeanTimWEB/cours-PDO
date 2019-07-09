@@ -1,5 +1,6 @@
 <?php
 require_once("classChien.php");
+require_once("classMaitre.php");
 
 class Database{
 
@@ -154,24 +155,60 @@ class Database{
             WHERE  c.id = :id");
             //execute
             $pdoStatement->execute(["id" => $id]);
-           // var_dump($pdoStatement->errorInfo());
+
+
+                $errorCode = $pdoStatement->errorCode();
+                if ($errorCode == 0) 
+                {   //si ca c'est bien passé renvoyer true
+                    return true;
+                }
+                else
+                {   //si ca c'est mal passé renvoyer false
+                    return false;
+                }
 
             }
 //---------------------------------------------------------------------------------------
 
             public function updateChien($id,$nom,$age,$race)
+            { //prepare
+                    $pdoStatement = $this->_connexion->prepare(
+                        " UPDATE CHIENS                   
+                        SET 
+                            nom  = :nom, 
+                            age  = :age,
+                            race = :race
+
+                        WHERE  id = :id "
+                    );
+                    //execute
+                    $pdoStatement->execute([
+                            'id' => $id,
+                            'nom' => $nom,
+                            'age' => $age,
+                            'race' => $race]);
+                
+
+                $errorCode = $pdoStatement->errorCode();
+                if ($errorCode == 0) 
+                {   //si ca c'est bien passé renvoyer true
+                    return true;
+                }
+                else
+                {   //si ca c'est mal passé renvoyer false
+                    return false;
+                }
+            }
+//---------------------------------------------------------------------------------------
+            public function getAllMasters()
             {
-                $pdoStatement = $this->_connexion->prepare(
-                    "UPDATE CHIENS                   
-                    SET nom = :nom, age = :age, race = :race
-                    WHERE  id = :id"
-                );
-                //execute
-                $pdoStatement->execute([
-                    'id' => $id,
-                    'nom' => $nom,
-                    'age' => $age,
-                    'race' => $race]);
+                $pdoStatement = $this->_connexion->prepare( 
+                    "SELECT id as _id, nom as _nom FROM Maitres"); // ne pas oublier les as pour ma technique de __les nom d'attribut privé      
+                $pdoStatement->execute();
+                
+                $maitres =$pdoStatement->fetchAll(PDO::FETCH_CLASS , 'Maitre');
+                
+                return $maitres;
             }
 
 
